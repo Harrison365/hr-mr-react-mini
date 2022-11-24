@@ -1,10 +1,12 @@
 import "./App.css";
 import black from "./black.png";
+import red from "./red.png"
 import { useState } from "react";
 
 let count = 0;
 
 function App() {
+  const [swapArr, setSwapArr] = useState([])
   const [board, setBoard] = useState([
     [1, 1, 1],
     [1, 2, 0],
@@ -46,60 +48,71 @@ function App() {
     [5, 6, 0],
     [5, 7, 0],
     [5, 8, 0],
-    [6, 1, 0],
-    [6, 2, 2],
-    [6, 3, 0],
-    [6, 4, 2],
-    [6, 5, 0],
-    [6, 6, 2],
-    [6, 7, 0],
-    [6, 8, 2],
-    [7, 1, 2],
-    [7, 2, 0],
-    [7, 3, 2],
-    [7, 4, 0],
-    [7, 5, 2],
-    [7, 6, 0],
-    [7, 7, 2],
-    [7, 8, 0],
+    [6, 1, 2],
+    [6, 2, 0],
+    [6, 3, 2],
+    [6, 4, 0],
+    [6, 5, 2],
+    [6, 6, 0],
+    [6, 7, 2],
+    [6, 8, 0],
+    [7, 1, 0],
+    [7, 2, 2],
+    [7, 3, 0],
+    [7, 4, 2],
+    [7, 5, 0],
+    [7, 6, 2],
+    [7, 7, 0],
+    [7, 8, 2],
     [8, 1, 2],
-    [8, 2, 2],
-    [8, 3, 0],
-    [8, 4, 2],
-    [8, 5, 0],
-    [8, 6, 2],
-    [8, 7, 0],
-    [8, 8, 2],
+    [8, 2, 0],
+    [8, 3, 2],
+    [8, 4, 0],
+    [8, 5, 2],
+    [8, 6, 0],
+    [8, 7, 2],
+    [8, 8, 0]
   ]);
-
-  console.log(board);
-
+  const [peice, setPeice] = useState()
+  
+  
   return (
     <div className="App">
       <div id="header">
-        <h1>Hello</h1>
+        <h1>Checkers!
+        </h1>
       </div>
 
       <div id="board">
-        {board.map((square) => {
+        {board.map((square, index) => {
           if (count % 2 === 0) {
             count++;
             if (square[1] === 8) {
               count++;
             }
-            return (
-              <div key={square} className="squareBlack">
-                <p>{square}</p>
+            return  ( board[index][2] === 1 ?
+              <div key={square} onClick={() => {setPeice(square); console.log(peice); }} className="squareBlack">
+                <div>{square}</div>
+                <img src={black}></img>
               </div>
+              :
+              <div key={square} className="squareBlack">
+              <div>{square}</div>
+            </div>
             );
           } else {
             count++;
             if (square[1] === 8) {
               count++;
             }
-            return (
-              <div key={square} className="squareWhite">
-                <p>{square}</p>
+            return ( board[index][2] === 2 ?
+              <div key={square} onClick={() => {setPeice(square); console.log(peice); }} className="squareWhite">
+              <div>{square}</div>
+              <img src={red}></img>
+            </div>
+              :
+              <div key={square} onClick={() => {if(peice){}}} className="squareWhite">
+                <div>{square}</div>
               </div>
             );
           }
