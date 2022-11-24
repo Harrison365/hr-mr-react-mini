@@ -71,9 +71,9 @@ let count = 0;
 function App() {
   return (
     <div className="App">
-      {/* <div id="header">
+      <div id="header">
         <h1>Hello</h1>
-      </div> */}
+      </div>
 
       <div id="board">
         {board.map((square) => {

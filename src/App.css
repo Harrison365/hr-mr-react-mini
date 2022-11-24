@@ -2,7 +2,9 @@
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  text-align: center;
 }
 
 .squareWhite {
@@ -20,7 +22,7 @@
 }
 
 #board {
-  margin-top: 2cm;
+  margin: auto;
   display: grid;
   grid-template-columns: 100px 100px 100px 100px 100px 100px 100px 100px;
   grid-template-rows: 100px 100px 100px 100px 100px 100px 100px 100px;
