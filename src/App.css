@@ -21,6 +21,10 @@
   width: 100%;
 }
 
+.black_img {
+  height: 1cm;
+}
+
 #board {
   margin: auto;
   display: grid;
