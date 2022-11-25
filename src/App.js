@@ -74,6 +74,7 @@ function App() {
     64: [8, 8, "black", 2],
   });
   const [peice, setPeice] = useState();
+  const [target, setTarget] = useState();
 
   return (
     <div className="App">
@@ -86,14 +87,7 @@ function App() {
           const [y, x, square, checker] = values;
           if (square === "white") {
             return (
-              <div
-                key={key}
-                onClick={() => {
-                  if (peice) {
-                  }
-                }}
-                className="squareWhite"
-              >
+              <div key={key} className="squareWhite">
                 <div>{key}</div>
               </div>
             );
@@ -101,10 +95,14 @@ function App() {
           if (square === "black" && checker === 0) {
             return (
               <div
-                key={square}
+                key={key}
                 onClick={() => {
-                  setPeice(square);
-                  console.log(peice);
+                  setTarget(key);
+                  let newBoard = { ...board };
+                  console.log(newBoard);
+                  console.log(newBoard[target]);
+                  newBoard[target][2] = board[peice][2];
+                  setBoard(newBoard);
                 }}
                 className="squareBlack"
               >
@@ -115,9 +113,9 @@ function App() {
           if (square === "black" && checker === 1) {
             return (
               <div
-                key={square}
+                key={key}
                 onClick={() => {
-                  setPeice(square);
+                  setPeice(key);
                   console.log(peice);
                 }}
                 className="squareBlack"
@@ -130,7 +128,7 @@ function App() {
           if (square === "black" && checker === 2) {
             return (
               <div
-                key={square}
+                key={key}
                 onClick={() => {
                   setPeice(square);
                   console.log(peice);
